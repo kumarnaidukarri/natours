@@ -1,0 +1,60 @@
+.story {
+  width: 75%;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg); /*bend position*/
+
+  &__shape {
+    // .story__shape
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%); /*text-flow in shape direction*/
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translateX(-3rem) skewX(12deg); /*don't use margins for floatedElement, instead use translateFunc to givespace*/
+    position: relative; /*parentEl of captionEl*/
+  }
+  &__img {
+    // .story__img
+    height: 100%;
+    transform: translateX(-4rem) scale(1.4); /*before-hovereffect scaled-up to big*/
+    backface-visibility: hidden; /*fixing animation shakiness*/
+    transform: all 0.5s; /*hover-effect transition*/
+  }
+  &__caption {
+    // .story__caption
+    color: $color-white;
+    font-size: 1.7rem;
+    text-align: center;
+    text-transform: uppercase;
+    position: absolute; /*childEl of shapeEl*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    opacity: 0; /*before-hovereffect invisible*/
+    transition: all 0.5s;
+    backface-visibility: hidden; /*fixing animation shakiness*/
+  }
+  &__text {
+    // .story__text
+    transform: skewX(12deg); /*bend to normalPosition*/
+  }
+
+  &:hover &__caption {
+    /*.story:hover .story__caption   => when hovering on story, Image-CaptionText should comeup and visible*/
+    opacity: 1; /*visible*/
+    transform: translate(-50%, -50%); /*move to Vcenter Hcenter*/
+  }
+  &:hover &__img {
+    /*.story:hover .story__img  => when hovering on story, Image should comeback to normalsize(scaledown)*/
+    transform: translateX(-4rem) scale(1); /*scale-down to normalsize*/
+    filter: blur(3px) brightness(80%);
+  }
+}

@@ -1,0 +1,30 @@
+
+*** Only Frontend-developed, no Backend-development  ***
+
+Skills:- modern techniques, responsive, semantic-coding
+HTML,CSS,SASS,JS
+
+sass compiler
+icons package- from lineaicons.com website
+cssgrid, cssfloats, css animation
+7-in-1 architecture: used 1saas folder contains all subfolders for reusable components.
+		     all that code imported to main.scss file.
+		     then, main.scss is compiled to plain styles.css file
+
+Description:
+naTours is a tour website.
+It have header, navbar, footer, Popup box,
+5sections - about, features, tours, stories, booking
+
+header-> it has icon,discover button
+navbar-> 5links to sections
+footer-> icon, description about website
+popupbox-> termsandconditions for booking
+
+about-> about-data, animated scaling images
+features-> scaling cards
+tours-> flipping cards, button for popup
+stories-> stories about previous tourUsers 
+booking-> booking form  with validation
+
+

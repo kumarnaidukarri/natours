@@ -1,0 +1,103 @@
+.form {
+  &__group:not(:last-child) {
+    /* .form__group:not(:last-child) means "select all childs(.form__group) except lastchildElement" */
+    margin-bottom: 2rem;
+  }
+  &__input {
+    // .form__input
+    font-size: 1.5rem;
+    font-family: inherit; /*fixing inputEls default family*/
+    color: inherit; /*fixing inputEls default color*/
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba($color-white, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent; /*fixing elementborderincrease sudden in focus state*/
+    width: 90%;
+    display: block;
+    transition: all 0.3s; /*focus state effect*/
+
+    &:focus {
+      // .form__input:focus
+      // valid state
+      outline: none; /*removingdefault outline*/
+      box-shadow: 0 1rem 2rem rgba($color-black, 0.1);
+      border-bottom: 3px solid $color-primary; /*element border*/
+    }
+    &:focus:invalid {
+      /* .form__input:focus:invalid  means "input have 2 states are valid,invalid" we can apply different styles to them*/
+      //invalid state
+      border-bottom: 3px solid $color-secondary-dark;
+    }
+    &::-webkit-input-placeholder {
+      /* .form__input::placeholder */
+      color: $color-grey-dark-2;
+    }
+  }
+
+  &__label {
+    // .form__label
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s; /*fading-in move effect placeholder*/
+  }
+  &__input:placeholder-shown + &__label {
+    /* .form__input:placeholder-shown + .form__label   
+        "+" is called SIBILING SELECTOR. used to select adjacentChildEl
+        when placeholder is shown in InputField, so we want label to be hidden
+    */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem);
+  }
+
+  /*Radio buttons Styling*/
+  &__radio-group {
+    /* .form__radio-group */
+    width: 49%;
+    display: inline-block; /*inline-block-elements arranges sideBySide*/
+  }
+  &__radio-input {
+    display: none; /*hiding default-radio-button, since we made our custom-radio-button*/
+  }
+  &__radio-label {
+    /* .form__radio-label */
+    font-size: $default-font-size;
+    cursor: pointer; /* HandIconCursor on element*/
+    position: relative; /*parentEl of span Custom-radio-button*/
+    padding-left: 4.5rem;
+  }
+  &__radio-button {
+    height: 3rem;
+    width: 3rem;
+    border: 5px solid $color-primary;
+    border-radius: 50%;
+    display: inline-block; /*above properties not Works for inline-elements only*/
+    position: absolute; /*childEl of labelEl*/
+    left: 0;
+    top: -0.4rem;
+    &::after {
+      // for inner circle El of button
+      content: "";
+      display: block;
+      height: 1.3rem;
+      width: 1.3rem;
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: $color-primary;
+      opacity: 0; /*hiding not visible*/
+      transition: opacity 0.2s;
+    }
+  }
+  &__radio-input:checked ~ &__radio-label &__radio-button::after {
+    /*when we ClicK radioInputElement, it is checked. then, we select its sibiling and then its child*/
+    /* "~" tilda is used to SELECT CHILD. */
+    opacity: 1; /* visible */
+  }
+}

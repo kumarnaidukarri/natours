@@ -1,0 +1,37 @@
+/* underscore(_) followed by filename is a filenamingconvertion i.e, it means PartialFile  ex:_variables.scss,_typography.scss 
+   normal filename ie., it means MainFile which contains all imports of partialfilescode   ex: main.scss 
+*/
+/*our file name is "_variables.scss" ,   we can write code here and import it to main file, 
+while importing we can mention either "variables.scss" (or) "_variables.scss"
+*/
+
+/*this "variables.scss" file contains all the Varaibles */
+/*Colors*/
+$color-primary: #55c57a;
+$color-primary-light: #7ed56f;
+$color-primary-dark: #28b485;
+
+/*Cards flipping colors*/
+$color-secondary-light: #ffb900;
+$color-secondary-dark: #ff7730;
+
+$color-tertiary-light: #2998ff;
+$color-tertiary-dark: #5643fa;
+
+$color-grey-light-1: #f7f7f7; //s-about
+$color-grey-light-2: #eee; //bottom-border
+
+$color-grey-dark: #777;
+$color-grey-dark-2: #999;
+$color-grey-dark-3: #333;
+
+$color-white: #fff;
+$color-black: #000;
+
+/* FONT */
+$default-font-size: 1.6rem;
+
+/*Grid*/
+$grid-width: 114rem;
+$gutter-vertical: 8rem; /*rowgap*/
+$gutter-horizontal: 6rem; /*columngap*/

@@ -1,0 +1,106 @@
+/* button is a reusable component */
+
+.btn {
+  font-family: inherit;
+  /* visitedState means button already clicked before.*/
+  &,
+  &:link,
+  &:visited {
+    display: inline-block; /*this element is considered as like text*/
+    padding: 1.5rem 4rem; /*tb lr*/
+    border-radius: 10rem;
+    font-size: $default-font-size;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    transition: all 0.2s; /*hover state transition .btn:hover*/
+    position: relative; /*parentEl*/
+    z-index: 1; /*frontLayer*/
+
+    /*Change for the <button> element*/
+    border: none;
+    cursor: pointer;
+  }
+  &:hover {
+    /* hover state of .btn El*/
+    transform: translateY(-3px); /*moveup 3px*/
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2); /*x y blur color*/
+
+    &::after {
+      /*hover state of afterPsuedoEl*/
+      transform: scaleX(1.4) scaleY(1.6); /*increase psuedoBtn size*/
+      opacity: 0; /*invisble*/
+    }
+  }
+  /* activeState means when we clicked it */
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-1px); /*-ve value means movesUp*/
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+    &::after {
+      background-color: $color-white;
+    }
+  }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  /*Psudeo element for .btn*/
+  &::after {
+    content: ""; /*this El is childof btn*/
+    display: inline-block; /*btnEl is blockinline, so PsuedoEl also be blockinline*/
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+
+    position: absolute; /*child of .btnEl*/
+    top: 0;
+    left: 0;
+    z-index: -1; /*hides psuedoEl to back of btnEl (backLayer)*/
+    transition: all 0.4s; /*hover state transition for btnAfterEl*/
+  }
+  &--white::after {
+    background-color: $color-white;
+  }
+
+  /* specific Animated Btn*/
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s; /*name duration time-funct delay*/
+    animation-fill-mode: backwards; /*styles of 0%frame automatically applies before the animation starts*/
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    color: $color-primary;
+    font-size: $default-font-size;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+
+    transition: all 0.2s; /*hoverstate animation*/
+  }
+  &:hover {
+    /*hover means mousecursor focus on Element*/
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px); /*move little UP*/
+  }
+  &:active {
+    /*active means Element 'clicked'*/
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0); /*moveback to initial position*/
+  }
+}

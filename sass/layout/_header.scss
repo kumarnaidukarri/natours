@@ -1,0 +1,44 @@
+/* we are not gonna treat HEADER as a component. because, In Multi-Pages website there will be Header for everyPage. So, it is a Layout*/
+.header {
+  height: 95vh;
+  /*frontside we need gradientcolor with opacity0.8, backside we need backgroundimg*/
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url(../img/hero.jpg); /*go back from css,then go to img,pick image*/
+  background-size: cover;
+  background-position: top; /*bg-image stays topofcontainer always fixed(wont crop)*/
+
+  /* ^>topleftCordinate ^>toprightCordinate <bottomrightCordinate <bottomleftCordinate*/
+  /* x y,x y,x y,x y  */
+  -webkit-clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 75vh,
+    0 100%
+  ); /*for other browsers support*/
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  position: relative; /*parentEl of logobox*/
+  &__logo-box {
+    /* '&' means '.header' */
+    position: absolute;
+    top: 4rem;
+    left: 4rem;
+  }
+  &__logo {
+    height: 3.5rem; /*height value is enough. browser will calculate WIDTH automatic*/
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+
+    /*perfect positioning textbox*/
+    transform: translate(-50%, -50%); /*x,y*/
+    text-align: center;
+  }
+}

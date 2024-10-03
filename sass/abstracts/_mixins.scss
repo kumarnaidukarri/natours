@@ -1,0 +1,16 @@
+@mixin clearfix {
+  /* clearfix adds a Pseudo Element after the Element which then clears the float Problem*/
+  &::after {
+    content: "";
+    display: table; /*standard type for clearfix*/
+    clear: both;
+  }
+}
+
+@mixin absCenter {
+  /* absCenter makes the element absolute perfect-center w.r.t to it's parentElement*/
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

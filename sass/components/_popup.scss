@@ -1,0 +1,91 @@
+/* Popup box is shown when  User clicks on booknow Button in adventures cards.*/
+.popup {
+  height: 100vh;
+  width: 100%;
+  background-color: rgba($color-black, 0.8s);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  /* default popup is hidden, shows when button clicked */
+  opacity: 0; /*hides*/
+  visibility: hidden; /*not accessible*/
+  transition: all 0.3s; /*target state*/
+
+  &__content {
+    /* .popup__content */
+    width: 75%;
+    background-color: $color-white;
+    box-shadow: 0 2rem 4rem rgba($color-black, 0.2);
+    border-radius: 3px;
+
+    @include absCenter; /*calling mixin function to centerElement*/
+    display: table;
+    overflow: hidden; /*fixed-images overlap with container and border-radius-curves not visible*/
+    /* small-animation-effect from default to target-state */
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.25);
+    transition: all 0.5s 0.2s; /*name duration delay*/
+  }
+  &__left {
+    /* .popup__left */
+    width: 34%;
+    display: table-cell;
+  }
+  &__right {
+    /* .popup__right */
+    width: 66%;
+    display: table-cell;
+    vertical-align: middle;
+    padding: 3rem 5rem;
+  }
+  &__img {
+    /* .popup__img */
+    display: block;
+    width: 100%;
+  }
+  &__text {
+    /* .popup__text */
+    font-size: 1.4rem;
+    margin-bottom: 4rem;
+
+    column-count: 2;
+    column-gap: 4rem; //1em=14px based on font-size
+    column-rule: 1px solid $color-grey-light-2;
+
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
+
+  /* Open states */
+  &:target {
+    /* 'Target' psuedoElement is Activated, when user Click element(clickedElement should have "href" attributevalue of this POPUP) */
+    opacity: 1;
+    visibility: visible;
+  }
+  &:target &__content {
+    /* when button is clicked*/
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  /*close-icon*/
+  &__close {
+    /* .popup__close means closeIcon*/
+    &:link,
+    &:visited {
+      color: $color-grey-dark;
+      font-size: 3rem;
+      text-decoration: none;
+      display: inline-block;
+      line-height: 1;
+      position: absolute;
+      top: 2.5rem;
+      right: 2.5rem;
+      transition: all 0.2s; /*hover state*/
+    }
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

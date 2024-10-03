@@ -1,0 +1,170 @@
+.navigation {
+  &__checkbox {
+    /* .navigation__checkbox */
+    display: none;
+  }
+  &__button {
+    /* .navigation__button */
+    background-color: $color-white;
+    height: 7rem;
+    width: 7rem;
+    box-shadow: 0 1rem 3rem rgba($color-black, 0.1);
+    position: fixed;
+    top: 6rem;
+    right: 6rem;
+    border-radius: 50%;
+    z-index: 200;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &__background {
+    /* .navigation__background  means "backgroundCircle" of NavBar-Button*/
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+    position: fixed; /*similar to absolute-position*/
+    top: 6.5rem;
+    right: 6.5rem;
+    background-image: radial-gradient(
+      $color-primary-light,
+      $color-primary-dark
+    );
+    z-index: 100;
+
+    /*default NavbarBackground should be hidden, until we click button*/
+    //transform: scale(80);
+    transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1); /*navbar-background-animation-effect openClose time*/
+  }
+  &__nav {
+    /* .navigation__nav */
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+
+    /*default Navbar should be hidden, until we click button */
+    opacity: 0; /*invisible*/
+    width: 0; /*links invisible but clickable, so removing width makes them no more clickable*/
+    transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55); /*navbar show-hide animationEffect time*/
+  }
+  &__list {
+    /* .navigation__list */
+    list-style: none;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*perfect center alignment*/
+  }
+  &__item {
+    /* .navigation__item */
+    margin: 1rem;
+  }
+
+  &__link {
+    /* .navigation__link */
+    &:link,
+    &:visited {
+      //normal state
+      display: inline-block;
+      font-size: 3rem;
+      font-weight: 300;
+      text-decoration: none;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      color: $color-white;
+      /* my sliding box animation */
+      background-image: linear-gradient(
+        120deg,
+        transparent 0%,
+        transparent 50%,
+        $color-white 50%
+      );
+      background-size: 230%;
+      transition: all 0.4s; /*hover effect*/
+
+      span {
+        display: inline-block;
+        margin-right: 1.5rem;
+      }
+    }
+    &:hover,
+    &:active {
+      //hover,active state
+      background-position: 100%; /*color-changing effect boxmovedleft*/
+      color: $color-primary;
+      transform: translateX(1rem); /*little move right*/
+    }
+  }
+
+  /* *************************************** */
+  /* FUNCTIONALITY */
+  /* CHECKBOX HACK for Navigation open and close*/
+  /* when we hit navbutton then check box is selected, again click means unselected*/
+  &__checkbox:checked ~ &__background {
+    /* if checkbox is clicked means selected*/
+    transform: scale(80); /*navbar background show*/
+  }
+  &__checkbox:checked ~ &__nav {
+    /* if checkbox is clicked means selected*/
+    opacity: 1; /*navbar visible show*/
+    width: 100%; /*accesible links*/
+  }
+
+  /* ICON ownHandMade for navbar*/
+  /* ***Horizontal-bar*** */
+  &__icon {
+    /* .navigation__icon */
+    position: relative; /*parentEl of before,after psuedoEls*/
+    margin-top: 3.5rem;
+    /* Horizontal-Icon */
+    &,
+    &::before,
+    &::after {
+      width: 3rem;
+      height: 2px;
+      background-color: $color-grey-dark-3;
+      display: inline-block;
+    }
+    &::before,
+    &::after {
+      content: "";
+      position: absolute; /*childEl of navigationIconEl*/
+      left: 0;
+      transition: all 0.2s; /*hover effect*/
+    }
+    &::before {
+      top: -0.8rem; /*moveup*/
+    }
+    &::after {
+      top: 0.8rem; /*movedown*/
+    }
+  }
+  /* hovering on navbar button, make Icon(horizontalspace increase before,after psuedoElements) */
+  &__button:hover &__icon::before {
+    top: -1rem;
+  }
+  &__button:hover &__icon::after {
+    top: 1rem;
+  }
+
+  /* ***Cross-Icon (x)*** */
+  &__checkbox:checked + &__button &__icon {
+    /* .navigation__checkbox:checked .navigation__button .navigation__icon */
+    /* when checkbox/navbutton is clicked/selected, then we select brother BUTTON, then we select button's child is ICON*/
+    background-color: transparent;
+  }
+  &__checkbox:checked + &__button &__icon::before {
+    /* when checkbox is selected,  beforePsuedoEl icon styling */
+    top: 0;
+    transform: rotate(135deg);
+  }
+  &__checkbox:checked + &__button &__icon::after {
+    /* when checkbox is selected,  afterPsuedoEl icon styling */
+    top: 0;
+    transform: rotate(-135deg);
+  }
+}

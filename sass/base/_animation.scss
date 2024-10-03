@@ -1,0 +1,38 @@
+/* this "animation.scss" file contains all the animation of our project*/
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0; /*not visible*/
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1; /*visible*/
+    transform: translate(0);
+  }
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0; /*not visible*/
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1; /*visible*/
+    transform: translate(0);
+  }
+}
+@keyframes moveInBottom {
+  0% {
+    opacity: 0; /*invisble*/
+    transform: translateY(3rem); /*+value means movesDown*/
+  }
+  100% {
+    opacity: 1; /*visble*/
+    transform: translateY(0); /*moves back to originalposition*/
+  }
+}
