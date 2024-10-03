@@ -1,4 +1,34 @@
 /* importing small Partial scss files to this Main.Scss*/
+/* MEDIA QUERY MANAGER */
+/*
+0   - 600px  : Phone
+600 - 900px  : Tablet portrait
+900 - 1200px : Tablet landscape
+
+1200 - 1800px : our Normal styles apply
+1800px  +     : Big Desktop
+*/
+/*
+$breakpoint argument choices
+- phone
+- tab-port
+- tab-land
+- big-desktop
+
+rem is not working properly in mediaqueries, so use em
+1em=16px  */
+/* calling usage 
+@include respond(phone) {
+  //blockofcode css properties
+}
+@include respond(tab-port) {
+}
+@include respond(tab-land) {
+}
+@include respond(big-desktop) {
+}
+*/
+/* ORDER responsive design order: BASE+Typography > generalLayout+grid > pageLayout > components*/
 /* underscore(_) followed by filename is a filenamingconvertion i.e, it means PartialFile  ex:_variables.scss,_typography.scss 
    normal filename ie., it means MainFile which contains all imports of partialfilescode   ex: main.scss 
 */
@@ -56,11 +86,27 @@ html {
   font-size: 62.5%;
   /*This defines what 1rem is*/
   scroll-behavior: smooth; }
+  @media only screen and (max-width: 75em) {
+    html {
+      /*1200px*/
+      font-size: 56.25%; } }
+  @media only screen and (max-width: 56.25em) {
+    html {
+      /*900px*/
+      font-size: 50%; } }
+  @media only screen and (min-width: 112.5em) {
+    html {
+      /*1800px*/
+      font-size: 75%; } }
 
 body {
   box-sizing: border-box;
   padding: 3rem;
   /*padding no inheritance*/ }
+  @media only screen and (max-width: 56.25em) {
+    body {
+      /*900px*/
+      padding: 0; } }
 
 *,
 *::after,
@@ -70,6 +116,11 @@ body {
   padding: 0;
   box-sizing: inherit;
   /*borders,paddings won't be added to height width of  element*/ }
+
+/*selection psuedoElement activated when user selects an text on our webpage*/
+::selection {
+  background-color: #55c57a;
+  color: #fff; }
 
 /* this file contains all typography */
 body {
@@ -98,6 +149,12 @@ body {
     /*animation-delay: 3s;
     animation-iteration-count: 3;
   */ }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--main {
+        /*600px*/
+        letter-spacing: 1rem;
+        font-size: 5rem;
+        /*here passed blockofCode from callingMixin*/ } }
   .heading-primary--sub {
     display: block;
     font-size: 2rem;
@@ -105,6 +162,11 @@ body {
     letter-spacing: 1.75rem;
     animation: moveInRight 1s ease-out;
     /* animation: name duration timing-function delay iteration-count direction fill-mode; */ }
+    @media only screen and (max-width: 37.5em) {
+      .heading-primary--sub {
+        /*600px*/
+        letter-spacing: 0.5rem;
+        /*here passed blockofCode from callingMixin*/ } }
 
 .heading-secondary {
   font-size: 3.5rem;
@@ -118,6 +180,15 @@ body {
   color: transparent;
   letter-spacing: 0.2rem;
   transition: all 0.2s; }
+  @media only screen and (max-width: 56.25em) {
+    .heading-secondary {
+      /*900px*/
+      font-size: 3rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .heading-secondary {
+      /*600px*/
+      font-size: 2.5rem;
+      /*here passed blockofCode from callingMixin*/ } }
   .heading-secondary:hover {
     transform: skewX(15deg) skewY(2deg) scale(1.1);
     /*skew means bending Element*/
@@ -144,9 +215,17 @@ body {
 
 .u-margin-bottom-medium {
   margin-bottom: 4rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-medium {
+      /*900px*/
+      margin-bottom: 3rem !important; } }
 
 .u-margin-bottom-big {
   margin-bottom: 8rem !important; }
+  @media only screen and (max-width: 56.25em) {
+    .u-margin-bottom-big {
+      /*900px*/
+      margin-bottom: 5rem !important; } }
 
 .u-margin-top-huge {
   margin-top: 10rem !important; }
@@ -265,15 +344,39 @@ body {
     /*space between outline and content*/
     transition: all 0.2s;
     /*hover transition*/ }
+    @media only screen and (max-width: 56.25em) {
+      .composition__photo {
+        /*900px*/
+        float: left;
+        position: relative;
+        width: 33.33%;
+        box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.2); } }
     .composition__photo--p1 {
       left: 0;
       top: -2rem; }
+      @media only screen and (max-width: 56.25em) {
+        .composition__photo--p1 {
+          /*900px*/
+          top: 0;
+          transform: scale(1.2); } }
     .composition__photo--p2 {
       right: 0;
       top: 2rem; }
+      @media only screen and (max-width: 56.25em) {
+        .composition__photo--p2 {
+          /*900px*/
+          top: -1rem;
+          transform: scale(1.3);
+          z-index: 100; } }
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
+      @media only screen and (max-width: 56.25em) {
+        .composition__photo--p3 {
+          /*900px*/
+          top: 1rem;
+          left: 0;
+          transform: scale(1.1); } }
     .composition__photo:hover {
       transform: scale(1.05) translateY(-0.5rem);
       box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5);
@@ -293,6 +396,10 @@ body {
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   transition: transform 0.3s;
   /*hover effect*/ }
+  @media only screen and (max-width: 56.25em) {
+    .feature-box {
+      /*900px*/
+      padding: 2rem; } }
   .feature-box__icon {
     font-size: 6rem;
     margin-bottom: 0.5rem;
@@ -301,6 +408,10 @@ body {
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent; }
+    @media only screen and (max-width: 56.25em) {
+      .feature-box__icon {
+        /*900px*/
+        margin-bottom: 0; } }
   .feature-box:hover {
     transform: translateY(-1.5rem) scale(1.03); }
 
@@ -313,7 +424,11 @@ body {
   height: 52rem;
   /*fixing height-lostIssue due to absolute-positioning*/
   /*FRONT SIDE STYLING */
-  /*BACK SIDE STYLING */ }
+  /*BACK SIDE STYLING */
+  /* *************************************** */
+  /*Ipad devices won't have  hovereffect since no cursor, so we have show flipping cards all-content in front-side
+    'only screen and hover:none' means non-hoverable devices
+  */ }
   .card__side {
     /* .card__side */
     height: 52rem;
@@ -325,6 +440,7 @@ body {
     left: 0;
     width: 100%;
     /*fixing Element fitonwidth problem caused due to absolutePosition*/
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     /*backside of card is hidden*/
     border-radius: 3px;
@@ -425,6 +541,44 @@ body {
   .card__price-value {
     font-size: 6rem;
     font-weight: 100; }
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    .card {
+      height: auto;
+      /*fixing height-lostIssue due to absolute-positioning*/
+      border-radius: 3px;
+      background-color: #fff;
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
+      /*FRONT SIDE STYLING */
+      /*BACK SIDE STYLING */ }
+      .card__side {
+        /* .card__side */
+        height: auto;
+        position: relative;
+        /*childEl*/
+        box-shadow: none; }
+        .card__side--back {
+          /* .card__side--back */
+          transform: rotateY(0);
+          clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%); }
+      .card:hover .card__side--front {
+        /* .card:hover .card__side--front => when we hover on card, belowProperties applies to FrontSideofCard */
+        transform: rotateY(0); }
+      .card__details {
+        /*.card__details*/
+        padding: 1rem 3rem; }
+      .card__cta {
+        position: relative;
+        /*center align*/
+        top: 0;
+        left: 0;
+        transform: translate(0);
+        /*perfect center align*/
+        width: 100%;
+        padding: 7rem 4rem 4rem 4rem; }
+      .card__price-box {
+        margin-bottom: 3rem; }
+      .card__price-value {
+        font-size: 4rem; } }
 
 .story {
   width: 75%;
@@ -437,19 +591,43 @@ body {
   font-size: 1.6rem;
   transform: skewX(-12deg);
   /*bend position*/ }
+  @media only screen and (max-width: 56.25em) {
+    .story {
+      /*900px*/
+      width: 100%;
+      padding: 4rem;
+      padding-left: 7rem; } }
+  @media only screen and (max-width: 37.5em) {
+    .story {
+      /*600px*/
+      transform: skewX(0);
+      /*bend position*/
+      /*here passed blockofCode from callingMixin*/ } }
   .story__shape {
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%);
-    /*text-flow in shape direction*/
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
     transform: translateX(-3rem) skewX(12deg);
     /*don't use margins for floatedElement, instead use translateFunc to givespace*/
     position: relative;
-    /*parentEl of captionEl*/ }
+    /*parentEl of captionEl*/
+    overflow: hidden;
+    border-radius: 50%;
+    /*if browser supports property, then only below applies*/ }
+    @supports (clip-path: circle(50% at 50% 50%)) or (-webkit-clip-path: circle(50% at 50% 50%)) {
+      .story__shape {
+        -webkit-clip-path: circle(50% at 50% 50%);
+        clip-path: circle(50% at 50% 50%);
+        -webkit-shape-outside: circle(50% at 50% 50%);
+        shape-outside: circle(50% at 50% 50%);
+        /*text-flow in shape direction*/
+        border-radius: none; } }
+    @media only screen and (max-width: 37.5em) {
+      .story__shape {
+        /*600px*/
+        transform: translateX(-3rem) skewX(0);
+        /*bend position*/
+        /*here passed blockofCode from callingMixin*/ } }
   .story__img {
     height: 100%;
     transform: translateX(-4rem) scale(1.4);
@@ -476,6 +654,11 @@ body {
   .story__text {
     transform: skewX(12deg);
     /*bend to normalPosition*/ }
+    @media only screen and (max-width: 37.5em) {
+      .story__text {
+        /*600px*/
+        transform: skewX(0);
+        /*here passed blockofCode from callingMixin*/ } }
   .story:hover .story__caption {
     /*.story:hover .story__caption   => when hovering on story, Image-CaptionText should comeup and visible*/
     opacity: 1;
@@ -523,6 +706,10 @@ body {
     display: block;
     transition: all 0.3s;
     /*focus state effect*/ }
+    @media only screen and (max-width: 56.25em) {
+      .form__input {
+        /*900px*/
+        width: 100%; } }
     .form__input:focus {
       outline: none;
       /*removingdefault outline*/
@@ -556,6 +743,11 @@ body {
     width: 49%;
     display: inline-block;
     /*inline-block-elements arranges sideBySide*/ }
+    @media only screen and (max-width: 56.25em) {
+      .form__radio-group {
+        /*900px*/
+        width: 100%;
+        margin-bottom: 2rem; } }
   .form__radio-input {
     display: none;
     /*hiding default-radio-button, since we made our custom-radio-button*/ }
@@ -614,8 +806,13 @@ body {
   /*not accessible*/
   transition: all 0.3s;
   /*target state*/
+  /*if browser supports backdrop-filter property, then inside block of code gets applies*/
   /* Open states */
   /*close-icon*/ }
+  @supports (-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+    .popup {
+      /*block of code*/
+      backdrop-filter: blur(10px); } }
   .popup__content {
     /* .popup__content */
     width: 75%;
@@ -699,6 +896,15 @@ body {
   .row:not(:last-child) {
     /* .row:last-child() -> 'not' means except lastchild row*/
     margin-bottom: 8rem; }
+    @media only screen and (max-width: 56.25em) {
+      .row:not(:last-child) {
+        /*900px*/
+        margin-bottom: 6rem; } }
+  @media only screen and (max-width: 56.25em) {
+    .row {
+      /*900px*/
+      max-width: 50rem;
+      padding: 0 3rem; } }
   .row::after {
     content: "";
     display: table;
@@ -712,6 +918,15 @@ body {
     .row [class^="col-"]:not(:last-child) {
       /* all cols except lastchild column */
       margin-right: 6rem; }
+      @media only screen and (max-width: 56.25em) {
+        .row [class^="col-"]:not(:last-child) {
+          /*900px*/
+          margin-right: 0;
+          margin-bottom: 6rem; } }
+    @media only screen and (max-width: 56.25em) {
+      .row [class^="col-"] {
+        /*900px*/
+        width: 100% !important; } }
   .row .col-1-of-2 {
     width: calc( (100% - 6rem) / 2);
     /* In SASS calc() function, variableName syntax mustbe used for variables */ }
@@ -728,20 +943,31 @@ body {
 
 /* we are not gonna treat HEADER as a component. because, In Multi-Pages website there will be Header for everyPage. So, it is a Layout*/
 .header {
-  height: 95vh;
+  height: 85vh;
   /*frontside we need gradientcolor with opacity0.8, backside we need backgroundimg*/
-  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero-small.jpg);
   /*go back from css,then go to img,pick image*/
   background-size: cover;
   background-position: top;
   /*bg-image stays topofcontainer always fixed(wont crop)*/
-  /* ^>topleftCordinate ^>toprightCordinate <bottomrightCordinate <bottomleftCordinate*/
-  /* x y,x y,x y,x y  */
-  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
-  /*for other browsers support*/
-  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
   position: relative;
-  /*parentEl of logobox*/ }
+  /*parentEl of logobox*/
+  /*if browser supports then below blockofcode gets applies*/
+  /* ***OPTIMIZATION***use Big-resolution-image if DPI is 2x  Retinal display, else use above default smallres-image*/ }
+  @supports (clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)) or (-webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%)) {
+    .header {
+      /*block of code*/
+      -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+      height: 95vh; } }
+  @media only screen and (min-resolution: 192dpi) and (min-width: 37.5em), only screen and (-webkit-min-device-pixel-ratio: 2) and (min-width: 37.5em), only screen and (min-width: 125em) {
+    .header {
+      background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg); } }
+  @media only screen and (max-width: 37.5em) {
+    .header {
+      /*600px*/
+      clip-path: polygon(0 0, 100% 0, 100% 85vh, 0 100%);
+      /*here passed blockofCode from callingMixin*/ } }
   .header__logo-box {
     /* '&' means '.header' */
     position: absolute;
@@ -764,10 +990,18 @@ body {
   padding: 10rem 0;
   font-size: 1.4rem;
   color: #f7f7f7; }
+  @media only screen and (max-width: 56.25em) {
+    .footer {
+      /*900px*/
+      padding: 8rem 0; } }
   .footer__logo-box {
     /* .footer__logo-box */
     text-align: center;
     margin-bottom: 8rem; }
+    @media only screen and (max-width: 56.25em) {
+      .footer__logo-box {
+        /*900px*/
+        margin-bottom: 6rem; } }
   .footer__logo {
     /* .footer__logo */
     width: 15rem;
@@ -778,6 +1012,11 @@ body {
     padding-top: 2rem;
     display: inline-block;
     /*occupies required content-width only*/ }
+    @media only screen and (max-width: 56.25em) {
+      .footer__navigation {
+        /*900px*/
+        width: 100%;
+        text-align: center; } }
   .footer__list {
     /* .footer__list */
     list-style: none; }
@@ -810,6 +1049,11 @@ body {
     padding-top: 2rem;
     width: 80%;
     float: right; }
+    @media only screen and (max-width: 56.25em) {
+      .footer__copyright {
+        /*900px*/
+        width: 100%;
+        float: none; } }
 
 .navigation {
   /* *************************************** */
@@ -836,6 +1080,17 @@ body {
     z-index: 200;
     text-align: center;
     cursor: pointer; }
+    @media only screen and (max-width: 56.25em) {
+      .navigation__button {
+        /*900px*/
+        top: 3rem;
+        right: 3rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation__button {
+        /*600px*/
+        top: 3.5rem;
+        right: 3.5rem;
+        /*here passed blockofCode from callingMixin*/ } }
   .navigation__background {
     /* .navigation__background  means "backgroundCircle" of NavBar-Button*/
     height: 6rem;
@@ -850,6 +1105,17 @@ body {
     /*default NavbarBackground should be hidden, until we click button*/
     transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
     /*navbar-background-animation-effect openClose time*/ }
+    @media only screen and (max-width: 56.25em) {
+      .navigation__background {
+        /*900px*/
+        top: 4.5rem;
+        right: 4.5rem; } }
+    @media only screen and (max-width: 37.5em) {
+      .navigation__background {
+        /*600px*/
+        top: 3.5rem;
+        right: 3.5rem;
+        /*here passed blockofCode from callingMixin*/ } }
   .navigation__nav {
     /* .navigation__nav */
     height: 100vh;
@@ -957,6 +1223,10 @@ body {
   padding: 25rem 0;
   margin-top: -20vh;
   /* -ve means Element -ve direction, matching with headerLeftoverDesignCut*/ }
+  @media only screen and (max-width: 56.25em) {
+    .section-about {
+      /*900px*/
+      padding: 20rem 0; } }
 
 .section-features {
   padding: 20rem 0;
@@ -971,20 +1241,36 @@ body {
       all directchilds(>*) of section-feature back to  normal skewposition
     */
     transform: skewY(7deg); }
+  @media only screen and (max-width: 56.25em) {
+    .section-features {
+      /*900px*/
+      padding: 10rem 0; } }
 
 .section-tours {
   background-color: #f7f7f7;
   padding: 25rem 0 15rem 0;
   margin-top: -10rem; }
+  @media only screen and (max-width: 56.25em) {
+    .section-tours {
+      /*900px*/
+      padding: 20rem 0 10rem 0; } }
 
 .section-stories {
   padding: 15rem 0;
   position: relative;
   /*parentEl of bg-video*/ }
+  @media only screen and (max-width: 56.25em) {
+    .section-stories {
+      /*900px*/
+      padding: 10rem 0; } }
 
 .section-book {
   padding: 15rem 0;
   background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+  @media only screen and (max-width: 56.25em) {
+    .section-book {
+      /*900px*/
+      padding: 10rem 0; } }
 
 .book {
   background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 50%, transparent 50%), url(../img/nat-10.jpg);
@@ -992,9 +1278,26 @@ body {
   background-size: 100%;
   border-radius: 3px;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  @media only screen and (max-width: 75em) {
+    .book {
+      /*1200px*/
+      background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 65%, transparent 65%), url(../img/nat-10.jpg);
+      background-size: cover; } }
+  @media only screen and (max-width: 56.25em) {
+    .book {
+      /*900px*/
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%), url(../img/nat-10.jpg); } }
   .book__form {
     width: 50%;
     padding: 6rem; }
+    @media only screen and (max-width: 75em) {
+      .book__form {
+        /*1200px*/
+        width: 65%; } }
+    @media only screen and (max-width: 56.25em) {
+      .book__form {
+        /*900px*/
+        width: 100%; } }
 
 /* Sassy CSS Syntax code. also normalCSS code works here  */
 /* COLORS- Lightgreen: #7ed56f Mediumgreen: #55c57a Darkgreen: #28b485  */

@@ -9,17 +9,40 @@
   font-size: $default-font-size;
   transform: skewX(-12deg); /*bend position*/
 
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0); /*bend position*/
+  }
+
   &__shape {
     // .story__shape
     width: 15rem;
     height: 15rem;
     float: left;
-    -webkit-shape-outside: circle(50% at 50% 50%);
-    shape-outside: circle(50% at 50% 50%); /*text-flow in shape direction*/
-    -webkit-clip-path: circle(50% at 50% 50%);
-    clip-path: circle(50% at 50% 50%);
+
     transform: translateX(-3rem) skewX(12deg); /*don't use margins for floatedElement, instead use translateFunc to givespace*/
     position: relative; /*parentEl of captionEl*/
+    overflow: hidden;
+    border-radius: 50%;
+    /*if browser supports property, then only below applies*/
+    @supports (clip-path: circle(50% at 50% 50%)) or
+      (-webkit-clip-path: circle(50% at 50% 50%)) {
+      //block of code
+      -webkit-clip-path: circle(50% at 50% 50%);
+      clip-path: circle(50% at 50% 50%);
+      -webkit-shape-outside: circle(50% at 50% 50%);
+      shape-outside: circle(50% at 50% 50%); /*text-flow in shape direction*/
+      border-radius: none;
+    }
+
+    @include respond(phone) {
+      transform: translateX(-3rem) skewX(0); /*bend position*/
+    }
   }
   &__img {
     // .story__img
@@ -45,6 +68,10 @@
   &__text {
     // .story__text
     transform: skewX(12deg); /*bend to normalPosition*/
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
   }
 
   &:hover &__caption {

@@ -11,7 +11,12 @@
   opacity: 0; /*hides*/
   visibility: hidden; /*not accessible*/
   transition: all 0.3s; /*target state*/
-
+  /*if browser supports backdrop-filter property, then inside block of code gets applies*/
+  @supports (-webkit-backdrop-filter: blur(10px)) or
+    (backdrop-filter: blur(10px)) {
+    /*block of code*/
+    backdrop-filter: blur(10px);
+  }
   &__content {
     /* .popup__content */
     width: 75%;

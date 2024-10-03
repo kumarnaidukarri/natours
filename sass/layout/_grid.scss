@@ -9,6 +9,14 @@
   &:not(:last-child) {
     /* .row:last-child() -> 'not' means except lastchild row*/
     margin-bottom: $gutter-vertical;
+
+    @include respond(tab-port) {
+      margin-bottom: $gutter-vertical-small;
+    }
+  }
+  @include respond(tab-port) {
+    max-width: 50rem;
+    padding: 0 3rem;
   }
   @include clearfix; /*calling mixin*/
   [class^="col-"] {
@@ -18,6 +26,14 @@
     &:not(:last-child) {
       /* all cols except lastchild column */
       margin-right: $gutter-horizontal;
+      @include respond(tab-port) {
+        margin-right: 0;
+        margin-bottom: $gutter-vertical-small;
+      }
+    }
+
+    @include respond(tab-port) {
+      width: 100% !important;
     }
   }
 

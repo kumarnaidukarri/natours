@@ -31,25 +31,29 @@
       <div class="navigation__nav">
         <ul class="navigation__list">
           <li class="navigation__item">
-            <a href="#" class="navigation__link"
+            <a href="#section-about" class="navigation__link"
               ><span>01</span>About Natours</a
             >
           </li>
           <li class="navigation__item">
-            <a href="#" class="navigation__link"
+            <a href="#section-features" class="navigation__link"
               ><span>02</span>Your benifits</a
             >
           </li>
           <li class="navigation__item">
-            <a href="#" class="navigation__link"
+            <a href="#section-tours" class="navigation__link"
               ><span>03</span>Popular tours</a
             >
           </li>
           <li class="navigation__item">
-            <a href="#" class="navigation__link"><span>04</span>Stories</a>
+            <a href="#section-stories" class="navigation__link"
+              ><span>04</span>Stories</a
+            >
           </li>
           <li class="navigation__item">
-            <a href="#" class="navigation__link"><span>05</span>Book now</a>
+            <a href="#section-book" class="navigation__link"
+              ><span>05</span>Book now</a
+            >
           </li>
         </ul>
       </div>
@@ -70,7 +74,7 @@
     <!-- MAIN -->
     <main>
       <!-- SECTION ABOUT -->
-      <section class="section-about">
+      <section class="section-about" id="section-about">
         <div class="u-center-text u-margin-bottom-big">
           <h2 class="heading-secondary">
             Exciting tours for adventurous people
@@ -101,6 +105,28 @@
           <div class="col-1-of-2">
             <div class="composition">
               <img
+                srcset="img/nat-1.jpg 300w, img/nat-1-large.jpg 1000w"
+                sizes="(max-width:900px) 20vw, (max-width:600px) 30vw, 300px"
+                alt="Photo 1"
+                class="composition__photo composition__photo--p1"
+                src="img/nat-1-large.jpg"
+              />
+              <img
+                srcset="img/nat-2.jpg 300w, img/nat-2-large.jpg 1000w"
+                sizes="(max-width:900px) 20vw, (max-width:600px) 30vw, 300px"
+                alt="Photo 2"
+                class="composition__photo composition__photo--p2"
+                src="img/nat-2-large.jpg"
+              />
+              <img
+                srcset="img/nat-3.jpg 300w, img/nat-3-large.jpg 1000w"
+                sizes="(max-width:900px) 20vw, (max-width:600px) 30vw, 300px"
+                alt="Photo 3"
+                class="composition__photo composition__photo--p3"
+                src="img/nat-3-large.jpg"
+              />
+              <!-- 
+              <img
                 src="img/nat-1-large.jpg"
                 alt="photo 1"
                 class="composition__photo composition__photo--p1"
@@ -115,12 +141,13 @@
                 alt="photo 3"
                 class="composition__photo composition__photo--p3"
               />
+              -->
             </div>
           </div>
         </div>
       </section>
       <!-- SECTION FEATURES -->
-      <section class="section-features">
+      <section class="section-features" id="section-features">
         <div class="row">
           <!-- eachbox-1 -->
           <div class="col-1-of-4">
@@ -287,7 +314,7 @@
         </div>
       </section>
       <!-- SECTION STORIES -->
-      <section class="section-stories">
+      <section class="section-stories" id="section-stories">
         <!-- background-video container -->
         <div class="bg-video">
           <video class="bg-video__content" autoplay muted loop>
@@ -355,7 +382,7 @@
         </div>
       </section>
       <!-- SECTION BOOKING -->
-      <section class="section-book">
+      <section class="section-book" id="section-book">
         <div class="row">
           <div class="book">
             <div class="book__form">
@@ -428,7 +455,21 @@
     <!-- FOOTER -->
     <footer class="footer">
       <div class="footer__logo-box">
-        <img src="img/logo-green-2x.png" alt="Full logo" class="footer__logo" />
+        <picture class="footer__logo">
+          <source
+            srcset="
+              img/logo-green-small-1x.png 1x,
+              img/logo-green-small-2x.png 2x
+            "
+            media="(max-width:37.5em)"
+          />
+          <img
+            srcset="img/logo-green-1x.png 1x, img/logo-green-2x.png 2x"
+            alt="Full logo"
+            class="footer__logo"
+            src="img/logo-green-2x.png"
+          />
+        </picture>
       </div>
       <div class="row">
         <div class="col-1-of-2">
@@ -464,7 +505,7 @@
             <a href="#" class="footer__link">
               &nbsp;Jonas Schmedtmann &nbsp;
             </a>
-            for being my instructor. All your designs are awesome, absolute
+            for being my instructor. All of your designs are awesome, absolute
             perfect and super clean. Your courses are easy well explained
             straight forward dive into work no Huss. It's great that we have
             You. Aperiam impedit asperiores dolore ex molestiae quo tenetur
@@ -496,9 +537,9 @@
             voluptatum, quam quis cumque? Dignissimos sequi aperiam obcaecati
             dolor temporibus molestias doloribus! Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Veniam officia corporis saepe eum
-            doloribus porro nesciunt iste, eligendi voluptate ullam hic amet
-            ducimus odio libero blanditiis perferendis et est. Amet. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Natus repudiandae neque
+            doloribus porro nesciunt iste, eli voluptate ullam hic amet ducimus
+            odio libero blanditiis perferendis et est. Amet. Lorem ipsum dolor
+            sit amet consectetur adipisicing elit. Natus repudiandae neque
             debitis adipisci magni non accusamus corporis tempora velit.
             Repudiandae aliquid sequi cupiditate quisquam deleniti iure mollitia
             temporibus quod exercitationem.

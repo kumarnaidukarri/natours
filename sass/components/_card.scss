@@ -13,6 +13,7 @@
     top: 0;
     left: 0;
     width: 100%; /*fixing Element fitonwidth problem caused due to absolutePosition*/
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden; /*backside of card is hidden*/
     border-radius: 3px;
     overflow: hidden; /*cardimage is overlapping and borderradiusCurves is not being seen. fixed*/
@@ -189,5 +190,59 @@
   &__price-value {
     font-size: 6rem;
     font-weight: 100;
+  }
+
+  /* *************************************** */
+  // Tablet-portrait MediaQuery
+  //@include respond(tab-port)
+  /*Ipad devices won't have  hovereffect since no cursor, so we have show flipping cards all-content in front-side
+    'only screen and hover:none' means non-hoverable devices
+  */
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    //FUNCTIONALITY
+    height: auto; /*fixing height-lostIssue due to absolute-positioning*/
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &__side {
+      /* .card__side */
+      height: auto;
+      position: relative; /*childEl*/
+      box-shadow: none;
+
+      &--back {
+        /* .card__side--back */
+        transform: rotateY(0);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      /* .card:hover .card__side--front => when we hover on card, belowProperties applies to FrontSideofCard */
+      transform: rotateY(0);
+    }
+
+    &__details {
+      /*.card__details*/
+      padding: 1rem 3rem;
+    }
+    /*FRONT SIDE STYLING */
+    /*BACK SIDE STYLING */
+    &__cta {
+      //  .card__cta
+      position: relative; /*center align*/
+      top: 0;
+      left: 0;
+      transform: translate(0); /*perfect center align*/
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+    &__price-value {
+      font-size: 4rem;
+    }
   }
 }
