@@ -367,7 +367,7 @@ body {
           /*900px*/
           top: -1rem;
           transform: scale(1.3);
-          z-index: 100; } }
+          z-index: 15; } }
     .composition__photo--p3 {
       left: 20%;
       top: 10rem; }
@@ -1083,13 +1083,13 @@ body {
     @media only screen and (max-width: 56.25em) {
       .navigation__button {
         /*900px*/
-        top: 3rem;
-        right: 3rem; } }
+        top: 4rem;
+        right: 4rem; } }
     @media only screen and (max-width: 37.5em) {
       .navigation__button {
         /*600px*/
-        top: 3.5rem;
-        right: 3.5rem;
+        top: 3rem;
+        right: 3rem;
         /*here passed blockofCode from callingMixin*/ } }
   .navigation__background {
     /* .navigation__background  means "backgroundCircle" of NavBar-Button*/
@@ -1139,7 +1139,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    /*perfect center alignment*/ }
+    /*perfect center alignment*/
+    width: 100%; }
   .navigation__item {
     /* .navigation__item */
     margin: 1rem; }
@@ -1155,7 +1156,7 @@ body {
       color: #fff;
       /* my sliding box animation */
       background-image: linear-gradient(120deg, transparent 0%, transparent 50%, #fff 50%);
-      background-size: 230%;
+      background-size: 250%;
       transition: all 0.4s;
       /*hover effect*/ }
       .navigation__link:link span, .navigation__link:visited span {
