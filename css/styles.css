@@ -881,6 +881,42 @@ body {
     .popup__close:hover {
       color: #55c57a; }
 
+/* ******************** */
+/* This is not a good practise */
+/* Testing POPUP-component for responsive "710px" */
+@media (max-width: 710px) {
+  .popup__content {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0; }
+  .popup__left {
+    display: flex;
+    justify-content: center;
+    width: 90%; }
+  .popup__right {
+    display: block;
+    padding: 0 1rem;
+    width: 100%;
+    text-align: center; }
+    .popup__right h2,
+    .popup__right h3 {
+      margin-bottom: 0 !important; }
+  .popup__img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    margin-right: 1rem; }
+  .popup__text {
+    display: block;
+    column-count: 1;
+    column-gap: 0;
+    column-rule: 0;
+    margin-bottom: 1rem; }
+  .popup__close {
+    /* .popup__close means closeIcon*/ }
+    .popup__close:link, .popup__close:visited {
+      top: 1rem; } }
+
 /* this "grid.scss" file contains grid system */
 .grid-test {
   background-color: black; }

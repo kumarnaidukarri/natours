@@ -94,3 +94,51 @@
     }
   }
 }
+
+/* ******************** */
+/* This is not a good practise */
+/* Testing POPUP-component for responsive "710px" */
+@media (max-width: 710px) {
+  .popup {
+    &__content {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem 0;
+    }
+    &__left {
+      display: flex;
+      justify-content: center;
+      width: 90%;
+    }
+    &__right {
+      display: block;
+      padding: 0 1rem;
+      width: 100%;
+      text-align: center;
+      & h2,
+      h3 {
+        margin-bottom: 0 !important;
+      }
+    }
+    &__img {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      margin-right: 1rem;
+    }
+    &__text {
+      display: block;
+      column-count: 1;
+      column-gap: 0;
+      column-rule: 0;
+      margin-bottom: 1rem;
+    }
+    &__close {
+      /* .popup__close means closeIcon*/
+      &:link,
+      &:visited {
+        top: 1rem;
+      }
+    }
+  }
+}
